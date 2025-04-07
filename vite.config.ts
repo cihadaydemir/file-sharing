@@ -11,7 +11,7 @@ export default defineConfig({
       generatedRouteTree: "./src/client/routeTree.gen.ts",
     }),
     reactStack({
-      clientEntry: "./src/client/routes/main.tsx",
+      clientEntry: "./src/client/main.tsx",
       serverEntry: "src/server/index.tsx",
       buildOutputDir: "dist-server",
       cssEntry: "src/style.css",
