@@ -10,53 +10,53 @@
 
 // Import Routes
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as MainImport } from './routes/main'
-import { Route as AboutImport } from './routes/about'
-import { Route as IndexImport } from './routes/index'
+import { Route as rootRoute } from "./routes/__root"
+import { Route as MainImport } from "./routes/main"
+import { Route as AboutImport } from "./routes/about"
+import { Route as IndexImport } from "./routes/index"
 
 // Create/Update Routes
 
 const MainRoute = MainImport.update({
-  id: '/main',
-  path: '/main',
+  id: "/main",
+  path: "/main",
   getParentRoute: () => rootRoute,
 } as any)
 
 const AboutRoute = AboutImport.update({
-  id: '/about',
-  path: '/about',
+  id: "/about",
+  path: "/about",
   getParentRoute: () => rootRoute,
 } as any)
 
 const IndexRoute = IndexImport.update({
-  id: '/',
-  path: '/',
+  id: "/",
+  path: "/",
   getParentRoute: () => rootRoute,
 } as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module '@tanstack/react-router' {
+declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
+    "/": {
+      id: "/"
+      path: "/"
+      fullPath: "/"
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
+    "/about": {
+      id: "/about"
+      path: "/about"
+      fullPath: "/about"
       preLoaderRoute: typeof AboutImport
       parentRoute: typeof rootRoute
     }
-    '/main': {
-      id: '/main'
-      path: '/main'
-      fullPath: '/main'
+    "/main": {
+      id: "/main"
+      path: "/main"
+      fullPath: "/main"
       preLoaderRoute: typeof MainImport
       parentRoute: typeof rootRoute
     }
@@ -66,30 +66,30 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/main': typeof MainRoute
+  "/": typeof IndexRoute
+  "/about": typeof AboutRoute
+  "/main": typeof MainRoute
 }
 
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/main': typeof MainRoute
+  "/": typeof IndexRoute
+  "/about": typeof AboutRoute
+  "/main": typeof MainRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/main': typeof MainRoute
+  "/": typeof IndexRoute
+  "/about": typeof AboutRoute
+  "/main": typeof MainRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/main'
+  fullPaths: "/" | "/about" | "/main"
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/main'
-  id: '__root__' | '/' | '/about' | '/main'
+  to: "/" | "/about" | "/main"
+  id: "__root__" | "/" | "/about" | "/main"
   fileRoutesById: FileRoutesById
 }
 
