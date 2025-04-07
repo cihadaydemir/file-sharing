@@ -10,6 +10,7 @@
 	},
 	"dependencies": {
 		"@hono/react-renderer": "^0.3.0",
+		"@tanstack/react-router": "^1.115.2",
 		"hono": "^4.7.5",
 		"react": "^19.1.0",
 		"react-dom": "^19.1.0",
@@ -17,6 +18,8 @@
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "^4.20250214.0",
+		"@tanstack/react-router-devtools": "^1.115.2",
+		"@tanstack/router-plugin": "^1.115.2",
 		"@types/react": "^19.1.0",
 		"@types/react-dom": "^19.1.1",
 		"hono-vite-react-stack": "^0.1.3",
