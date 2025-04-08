@@ -1,8 +1,10 @@
-import { StrictMode } from "react"
-import ReactDOM from "react-dom/client"
-import { RouterProvider, createRouter } from "@tanstack/react-router"
-import { routeTree } from "./routeTree.gen"
 import "./style.css"
+
+import { RouterProvider, createRouter } from "@tanstack/react-router"
+
+import ReactDOM from "react-dom/client"
+import { StrictMode } from "react"
+import { routeTree } from "./routeTree.gen"
 
 // Import the generated route tree
 
