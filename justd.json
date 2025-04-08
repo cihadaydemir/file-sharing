@@ -2,7 +2,7 @@
   "ui": "src/client/components/ui",
   "utils": "src/client/utils",
   "gray": "gray",
-  "css": "src/style.css",
+  "css": "src/client/style.css",
   "alias": "@",
   "language": "typescript",
   "$schema": "https://getjustd.com/schema.json"
