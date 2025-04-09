@@ -1,8 +1,14 @@
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router"
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools"
-import { Providers } from "../components/providers"
+import { Link, Outlet, createRootRouteWithContext } from "@tanstack/react-router"
 
-export const Route = createRootRoute({
+import { Providers } from "../components/providers"
+import type { QueryClient } from "@tanstack/react-query"
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools"
+
+interface RouterContext {
+  queryClient: QueryClient
+}
+
+export const Route = createRootRouteWithContext<RouterContext>()({
   component: () => (
     <Providers>
       <div className="flex gap-2 p-2">
@@ -15,7 +21,7 @@ export const Route = createRootRoute({
       </div>
       <hr />
       <Outlet />
-      <TanStackRouterDevtools />
+      {import.meta.env.DEV && <TanStackRouterDevtools />}
     </Providers>
   ),
 })
