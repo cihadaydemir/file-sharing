@@ -9,7 +9,8 @@
     "deploy": "wrangler deploy",
     "format": "bunx biome format --write .",
     "lint": "bunx biome lint --write .",
-    "check": "bunx biome check --write ."
+    "check": "bunx biome check --write .",
+    "cf-types": "wrangler types"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.0.3",

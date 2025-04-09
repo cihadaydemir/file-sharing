@@ -12,4 +12,10 @@
     "mode": "off",
   },
   "observability": { "enabled": true },
+  "r2_buckets": [
+    {
+      "bucket_name": "file-sharing-r2",
+      "binding": "file_sharing_r2",
+    },
+  ],
 }
