@@ -12,6 +12,7 @@ export const Route = createRootRouteWithContext<RouterContext>()({
   component: () => (
     <Providers>
       <div className="flex gap-2 p-2">
+        <p className="font-bold">FileShare</p>
         <Link to="/" className="[&.active]:font-bold">
           Home
         </Link>{" "}
@@ -20,7 +21,9 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         </Link>
       </div>
       <hr />
-      <Outlet />
+      <div className="h-full w-full overflow-hidden">
+        <Outlet />
+      </div>
       {import.meta.env.DEV && <TanStackRouterDevtools />}
     </Providers>
   ),

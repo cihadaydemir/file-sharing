@@ -177,7 +177,9 @@
     scrollbar-color: var(--border) transparent;
   }
 
-  html {
+  html,
+  body,
+  #root {
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     font-variation-settings: normal;
     scroll-behavior: smooth;
