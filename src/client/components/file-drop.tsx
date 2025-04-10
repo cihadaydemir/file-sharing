@@ -30,7 +30,11 @@ export const FileDrop = () => {
       const item = files[0]
 
       if (item) {
-        setDroppedFile(files)
+        if (droppedFile) {
+          setDroppedFile([...droppedFile, ...files])
+        } else {
+          setDroppedFile(files)
+        }
       }
     }
   }
