@@ -16,9 +16,11 @@ export const FileDrop = () => {
     const item = e.items.filter(isFileDropItem)
     const files = await Promise.all(item.map((item) => item.getFile()))
     if (files) {
-      console.log("dropped item", item)
-      //   const file = await item[0].getFile()
-      setDroppedFile(files)
+      if (droppedFile) {
+        setDroppedFile([...droppedFile, ...files])
+      } else {
+        setDroppedFile(files)
+      }
     }
   }
 
