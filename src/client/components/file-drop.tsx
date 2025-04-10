@@ -39,7 +39,7 @@ export const FileDrop = () => {
     }
   }
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex h-full w-full flex-col gap-2">
       <DropZone
         getDropOperation={(types) =>
           types.has("image/jpeg") || types.has("image/png") || types.has("application/pdf")
@@ -47,6 +47,7 @@ export const FileDrop = () => {
             : "cancel"
         }
         onDrop={onDropHandler}
+        className={"min-h-[80%] w-full min-w-full"}
       >
         {droppedFile ? (
           // <img alt="" src={droppedFile} className="aspect-square size-full object-contain" />
