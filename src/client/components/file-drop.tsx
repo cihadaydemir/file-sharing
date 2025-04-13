@@ -1,11 +1,13 @@
+import { IconGallery, IconX } from "@intentui/icons"
+
 import { Button } from "./ui/button"
 import { Description } from "./ui/field"
 import type { DropEvent } from "@react-types/shared"
 import { DropZone } from "./ui/drop-zone"
 import { FileTrigger } from "./ui/file-trigger"
 import { IconFile } from "justd-icons"
-import { IconGallery } from "@intentui/icons"
 import { isFileDropItem } from "react-aria-components"
+import { toast } from "sonner"
 import { useFileUpload } from "../hooks/useFileUpload"
 import { useState } from "react"
 
@@ -51,11 +53,31 @@ export const FileDrop = () => {
       >
         {droppedFile ? (
           // <img alt="" src={droppedFile} className="aspect-square size-full object-contain" />
-          <div className="flex flex-row gap-2">
+          <div className="flex flex-row gap-2 ">
             {droppedFile.map((file) => (
-              <div key={file.name} className="flex flex-col">
-                <IconFile />
-                <p>{`${file.name} (${file.size.toLocaleString("de")} kb)`}</p>
+              <div
+                key={file.name}
+                className="group/file-card flex max-w-xs flex-col rounded-md border border-border p-4 hover:border-fg"
+              >
+                <div className=" relative flex justify-between">
+                  <IconFile className="size-5" />
+                  <Button
+                    size="square-petite"
+                    intent="plain"
+                    onPress={() => {
+                      setDroppedFile((prev) =>
+                        prev?.filter((prevFile) => prevFile.name === file.name),
+                      )
+                    }}
+                    className={"invisible group-hover/file-card:visible"}
+                  >
+                    <IconX />
+                  </Button>
+                </div>
+                <p className="line-clamp-1 w-sm truncate text-ellipsis">
+                  {file.name}{" "}
+                  <span className="text-muted-fg">({file.size.toLocaleString("de")} kb)</span>
+                </p>
               </div>
             ))}
           </div>
@@ -81,7 +103,16 @@ export const FileDrop = () => {
       <Button
         onPress={() => {
           if (droppedFile) {
-            uploadFile.mutate(droppedFile)
+            uploadFile.mutate(droppedFile, {
+              onSuccess: (data, variables, ctx) => {
+                if (data.sucess) {
+                  toast.success(`${variables.length} Files uploaded successfully.`)
+                } else {
+                  toast.error("Files couldn't be uploaded.")
+                }
+              },
+              onError: () => toast.error("Something went wrong."),
+            })
           }
         }}
       >
