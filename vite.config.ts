@@ -1,6 +1,7 @@
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite"
 import { cloudflare } from "@cloudflare/vite-plugin"
 import { defineConfig } from "vite"
+import path from "node:path"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
 
@@ -16,8 +17,13 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  server:{
+  server: {
     port: 3000,
     strictPort: true,
-  }
+  },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 })

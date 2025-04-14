@@ -45,5 +45,8 @@
     "vite": "^6.2.5",
     "wrangler": "^4.9.1"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "packageManager": "bun@1.2.0"
 }
