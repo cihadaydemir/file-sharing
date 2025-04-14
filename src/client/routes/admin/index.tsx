@@ -1,3 +1,4 @@
+import { FilesTable } from "@/client/components/files-table"
 import { createFileRoute } from "@tanstack/react-router"
 
 export const Route = createFileRoute("/admin/")({
@@ -5,5 +6,10 @@ export const Route = createFileRoute("/admin/")({
 })
 
 function RouteComponent() {
-  return <div>Hello "/admin/"!</div>
+  return (
+    <div className="">
+      <h1 className="font-bold text-2xl">Files</h1>
+      <FilesTable />
+    </div>
+  )
 }
