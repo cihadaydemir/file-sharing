@@ -16,12 +16,12 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         <Link to="/" className="[&.active]:font-bold">
           Home
         </Link>{" "}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
+        <Link to="/admin" className="[&.active]:font-bold">
+          Admin
         </Link>
       </div>
       <hr />
-      <div className="h-full w-full overflow-hidden">
+      <div className="flex h-full w-full flex-col overflow-hidden p-4">
         <Outlet />
       </div>
       {import.meta.env.DEV && <TanStackRouterDevtools />}
