@@ -1,11 +1,10 @@
-import { IconGallery, IconX } from "@intentui/icons"
+import { IconFile, IconGallery, IconX } from "@intentui/icons"
 
 import { Button } from "./ui/button"
 import { Description } from "./ui/field"
 import type { DropEvent } from "@react-types/shared"
 import { DropZone } from "./ui/drop-zone"
 import { FileTrigger } from "./ui/file-trigger"
-import { IconFile } from "justd-icons"
 import { isFileDropItem } from "react-aria-components"
 import { toast } from "sonner"
 import { useFileUpload } from "../hooks/useFileUpload"

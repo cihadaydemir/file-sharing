@@ -44,7 +44,7 @@ export const FilesTable = () => {
             <Table.Row id={item.key}>
               <Table.Cell>{files.files.indexOf(item)}</Table.Cell>
               <Table.Cell>{item.key}</Table.Cell>
-              <Table.Cell>{item.size}</Table.Cell>
+              <Table.Cell>{`${item.size.toLocaleString("de")} kb`}</Table.Cell>
               <Table.Cell>{item.type}</Table.Cell>
               <Table.Cell>
                 <div className="flex justify-end">
