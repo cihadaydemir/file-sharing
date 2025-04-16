@@ -27,7 +27,7 @@ export const FileContainer = ({ files, onRemoveFile, formatFileSize }: FileConta
               <IconX />
             </Button>
           </div>
-          <p className="w-sm break-words">
+          <p className="break-words">
             {file.name} <span className="text-muted-fg">({formatFileSize(file.size)})</span>
           </p>
         </div>
