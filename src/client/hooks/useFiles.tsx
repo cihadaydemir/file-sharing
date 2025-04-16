@@ -1,15 +1,8 @@
+import type { FileMetadata } from "@/server"
 import { hono } from "../lib/hono-client"
 import { useQuery } from "@tanstack/react-query"
 
-interface FileMetadata {
-  key: string
-  size: number
-  type: string
-  lastModified: string
-}
-
 interface FilesResponse {
-  success: boolean
   files: FileMetadata[]
 }
 

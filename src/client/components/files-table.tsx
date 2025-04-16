@@ -3,10 +3,13 @@ import { IconDotsVertical, IconRefresh } from "@intentui/icons"
 import { Button } from "./ui/button"
 import { Menu } from "./ui/menu"
 import { Table } from "./ui/table"
+import { useFileDownload } from "../hooks/useFileDownload"
 import { useFiles } from "../hooks/useFiles"
 
 export const FilesTable = () => {
   const { data: files, error, refetch } = useFiles()
+  const downloadFile = useFileDownload()
+
   console.log("files", files)
 
   if (error) {
@@ -54,7 +57,14 @@ export const FilesTable = () => {
                     </Menu.Trigger>
                     <Menu.Content aria-label="Actions" placement="left top">
                       <Menu.Item>View</Menu.Item>
-                      <Menu.Item>Download</Menu.Item>
+                      <Menu.Item
+                        onAction={() => {
+                          // Create a new instance of the hook for each download
+                          downloadFile.mutate(item.key)
+                        }}
+                      >
+                        Download
+                      </Menu.Item>
                       <Menu.Separator />
                       <Menu.Item isDanger>Delete</Menu.Item>
                     </Menu.Content>
