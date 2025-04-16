@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "deploy": "wrangler deploy",
+    "deploy": "bun run build && wrangler deploy",
     "format": "bunx biome format --write .",
     "lint": "bunx biome lint --write .",
     "check": "bunx biome check --write .",
