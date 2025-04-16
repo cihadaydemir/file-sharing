@@ -16,9 +16,11 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         <Link to="/" className="[&.active]:font-bold">
           Home
         </Link>{" "}
-        <Link to="/admin" className="[&.active]:font-bold">
-          Admin
-        </Link>
+        {import.meta.env.DEV && (
+          <Link to="/admin" className="[&.active]:font-bold">
+            Admin
+          </Link>
+        )}
       </div>
       <hr />
       <div className="flex h-full w-full flex-col overflow-hidden p-4">
