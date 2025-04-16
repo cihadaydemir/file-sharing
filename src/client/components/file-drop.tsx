@@ -50,7 +50,7 @@ export const FileDrop = () => {
         onDrop={onDropHandler}
         className={"min-h-[80%] w-full min-w-full"}
       >
-        {droppedFile ? (
+        {droppedFile && droppedFile.length > 0 ? (
           <FileContainer
             files={droppedFile}
             onRemoveFile={(fileName) => {
