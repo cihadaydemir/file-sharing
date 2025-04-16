@@ -95,6 +95,7 @@ export const FileDrop = () => {
               onSuccess: (data, variables, ctx) => {
                 if (data.sucess) {
                   toast.success(`${variables.length} Files uploaded successfully.`)
+                  setDroppedFile([])
                 } else {
                   toast.error("Files couldn't be uploaded.")
                 }
