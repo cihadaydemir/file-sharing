@@ -13,7 +13,7 @@
     "cf-types": "wrangler types"
   },
   "dependencies": {
-    "@cloudflare/vite-plugin": "^1.0.3",
+    "@cloudflare/vite-plugin": "^1.0.7",
     "@hono/react-renderer": "^0.3.0",
     "@hono/zod-validator": "^0.4.3",
     "@intentui/icons": "^1.10.33",
