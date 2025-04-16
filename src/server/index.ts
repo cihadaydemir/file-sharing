@@ -51,6 +51,19 @@ const routes = app
       headers,
     })
   })
+  .delete("/api/delete", async (c) => {
+    const key = c.req.query("key")
+    if (!key) {
+      return c.json({ success: false, message: "File key is required" }, 400)
+    }
+
+    try {
+      await c.env.file_sharing_r2.delete(key)
+      return c.json({ success: true, message: "File deleted successfully" })
+    } catch (error) {
+      return c.json({ success: false, message: "Failed to delete file" }, 500)
+    }
+  })
   .put(
     "/api/upload",
     zValidator(

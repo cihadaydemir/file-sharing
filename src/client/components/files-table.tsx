@@ -2,15 +2,19 @@ import { IconDotsVertical, IconRefresh } from "@intentui/icons"
 
 import { Button } from "./ui/button"
 import { Menu } from "./ui/menu"
+import { Modal } from "./ui/modal"
 import { Table } from "./ui/table"
+import { useFileDelete } from "../hooks/useFileDelete"
 import { useFileDownload } from "../hooks/useFileDownload"
 import { useFiles } from "../hooks/useFiles"
+import { useState } from "react"
 
 export const FilesTable = () => {
   const { data: files, error, refetch } = useFiles()
   const downloadFile = useFileDownload()
-
-  console.log("files", files)
+  const deleteFile = useFileDelete()
+  const [fileToDelete, setFileToDelete] = useState<string | null>(null)
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
 
   if (error) {
     return (
@@ -30,7 +34,7 @@ export const FilesTable = () => {
 
   return (
     <div className="flex flex-col gap-1">
-      <Button onPress={() => refetch} className={"self-end"}>
+      <Button onPress={() => refetch()} className={"self-end"}>
         <IconRefresh />
         Refresh
       </Button>
@@ -66,7 +70,15 @@ export const FilesTable = () => {
                         Download
                       </Menu.Item>
                       <Menu.Separator />
-                      <Menu.Item isDanger>Delete</Menu.Item>
+                      <Menu.Item
+                        isDanger
+                        onAction={() => {
+                          setFileToDelete(item.key)
+                          setIsDeleteDialogOpen(true)
+                        }}
+                      >
+                        Delete
+                      </Menu.Item>
                     </Menu.Content>
                   </Menu>
                 </div>
@@ -75,6 +87,37 @@ export const FilesTable = () => {
           )}
         </Table.Body>
       </Table>
+
+      {/* Delete Confirmation Dialog */}
+      <Modal isOpen={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <Modal.Content>
+          <Modal.Header>
+            <Modal.Title>Confirm Deletion</Modal.Title>
+            <Modal.Description>
+              Are you sure you want to delete this file? This action cannot be undone.
+            </Modal.Description>
+          </Modal.Header>
+
+          <Modal.Footer>
+            <Button intent="outline" onPress={() => setIsDeleteDialogOpen(false)}>
+              Cancel
+            </Button>
+            <Button
+              intent="danger"
+              onPress={() => {
+                if (fileToDelete) {
+                  deleteFile.mutate(fileToDelete)
+                  setIsDeleteDialogOpen(false)
+                  setFileToDelete(null)
+                }
+              }}
+              isDisabled={deleteFile.isPending}
+            >
+              {deleteFile.isPending ? "Deleting..." : "Delete"}
+            </Button>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
     </div>
   )
 }
