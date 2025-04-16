@@ -23,6 +23,7 @@
     "@tanstack/react-router": "^1.115.2",
     "hono": "^4.7.6",
     "justd-icons": "^1.10.26",
+    "motion": "^12.7.3",
     "react": "^19.1.0",
     "react-aria-components": "^1.8.0",
     "react-dom": "^19.1.0",

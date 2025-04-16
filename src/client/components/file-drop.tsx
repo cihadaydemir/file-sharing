@@ -5,6 +5,7 @@ import { DropZone } from "./ui/drop-zone"
 import { FileContainer } from "./file-container"
 import { FileTrigger } from "./ui/file-trigger"
 import { IconGallery } from "@intentui/icons"
+import { Meter } from "./ui/meter"
 import { isFileDropItem } from "react-aria-components"
 import { toast } from "sonner"
 import { useFileUpload } from "../hooks/useFileUpload"
@@ -41,6 +42,7 @@ export const FileDrop = () => {
   }
   return (
     <div className="flex h-full w-full flex-col gap-2">
+      {uploadFile.progress > 0 && <Meter value={uploadFile.progress} />}
       <DropZone
         getDropOperation={(types) =>
           types.has("image/jpeg") || types.has("image/png") || types.has("application/pdf")
